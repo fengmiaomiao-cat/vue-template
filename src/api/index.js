@@ -8,7 +8,7 @@ axios.defaults.baseURL = "http://api.github.com";
 axios.interceptors.request.use(
   config => {
     if (store.state.token) {
-      config.headers.Authorization = `token ${store.state.token}`;
+      config.headers.Authorization = `Bear ${store.state.token}`;
     }
     return config;
   },
@@ -22,9 +22,9 @@ axios.interceptors.response.use(
   },
   eror => {
     if (error.response) {
-      const message = error.response.message;
+      const message = error.data.response.message;
       Message.error(message);
-      switch (error.response.status) {
+      switch (error.data.response.status) {
         case 401:
           store.commit("types.LOGOUT");
           router.replace({
