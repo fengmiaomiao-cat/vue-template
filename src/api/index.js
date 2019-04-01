@@ -3,8 +3,9 @@ import store from "../store/index.js";
 import * as types from "../store/types.js";
 import router from "../router/index.js";
 import Message from '../plugins/el_message/main.js';
-axios.defaults.timeout = 5000;
-axios.defaults.baseURL = "http://api.github.com";
+import ｛baseURL，timeout｝ from './config.js'；
+axios.defaults.timeout = timeout;
+axios.defaults.baseURL = baseURL;
 axios.interceptors.request.use(
   config => {
     if (store.state.token) {
