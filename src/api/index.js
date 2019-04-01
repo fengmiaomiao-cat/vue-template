@@ -12,8 +12,8 @@ axios.interceptors.request.use(
     }
     return config;
   },
-  err => {
-    return Promise.reject(err);
+  error => {
+    return Promise.reject(error);
   }
 );
 axios.interceptors.response.use(
@@ -22,7 +22,7 @@ axios.interceptors.response.use(
   },
   eror => {
     if (error.response) {
-      const message = err.response.message;
+      const message = error.response.message;
       Message.error(message);
       switch (error.response.status) {
         case 401:
@@ -38,4 +38,14 @@ axios.interceptors.response.use(
     return Promise.reject(error.response.data);
   }
 );
-export default axios;
+export const gl_ajax = (params)=>{
+   return axios({
+     method:params.method.toLowerCase(),
+     url:axios.defaults.baseURL+params.url,
+     data:params.data?params.data:{},
+   }).then(res=>{
+     params.success && params.success(res)
+   }).catch(error=>{
+     params.error(error)
+   });
+}
