@@ -4,9 +4,9 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router";
 import store from "./store/index.js";
-import axios from "./api/index.js";
+import {gl_ajax} from "./api/index.js";
 Vue.config.productionTip = false;
-Vue.prototype.$ajax = axios;
+Vue.prototype.$gl_ajax = gl_ajax;
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
