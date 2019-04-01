@@ -4,4 +4,5 @@ if（process.NODE_ENV == 'development'）｛
 ｝else if（process.NODE_ENV == 'production'）｛
  baseURL = 'pro.api.com'；
 ｝
+export const tiemeout = 5000；
 export baseURL；
