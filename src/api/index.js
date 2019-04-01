@@ -41,7 +41,7 @@ axios.interceptors.response.use(
 export const gl_ajax = (params)=>{
    return axios({
      method: params.method.toLowerCase(),
-     url: axios.defaults.baseURL+ params.url,
+     url: axios.defaults.baseURL + params.url,
      data: params.data?params.data:{},
    }).then(res=>{
      params.success && params.success(res)
