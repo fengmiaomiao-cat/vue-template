@@ -21,8 +21,8 @@ axios.interceptors.response.use(
   response => {
     return response;
   },
-  eror => {
-    if (error.response) {
+  error => {
+    if (error.data.response) {
       const message = error.data.response.message;
       Message.error(message);
       switch (error.data.response.status) {
@@ -36,7 +36,7 @@ axios.interceptors.response.use(
           });
       }
     }
-    return Promise.reject(error.response.data);
+    return Promise.reject(error);
   }
 );
 export const gl_ajax = (params)=>{
