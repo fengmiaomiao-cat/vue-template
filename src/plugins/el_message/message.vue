@@ -1,20 +1,19 @@
 <template>
-  <transition name="message-fade">
-    <div v-if="visible" :class="wrapClasses" :style="styels">
+  <transition name="el_message-fade">
+    <div v-if="visible" :class="wrapClasses">
         <Icon :iconType="type"></Icon>
         <span :class="[prefixCls+'-content']">
           {{message}}
         </span>
-    </div>    
+    </div>        
   </transition>
 </template>
 
 <script>
-const prefixCls = "message";
+const prefixCls = "el_message";
 import Icon from "../el_icon/index.js";
-
 export default {
-  name: "message",
+  name: "el_message",
   data() {
     return {
       visible: false,
@@ -30,11 +29,6 @@ export default {
   computed: {
     wrapClasses() {
       return [`${prefixCls}`, `${prefixCls}-${this.type}`];
-    },
-    styels() {
-      return {
-        zIndex: 9999
-      };
     }
   },
   methods: {
@@ -58,41 +52,32 @@ export default {
 </script>
 
 <style scoped>
-.message-fade-enter-active,
-.message-fade-leave-active {
+.el_message-fade-enter-active,
+.el_message-fade-leave-active {
   transition: all 0.3s ease;
 }
-.message-fade-enter, .message-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.el_message-fade-enter, .el_message-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   transform: translateY(-20px);
   opacity: 0;
 }
-.message {
+.el_message {
   position: fixed;
   top: 30px;
-  left: 50%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 10px;
-  padding: 16px 24px 16px 8px;
+  width: 15%;
+  left: 0;
+  right: 0;
+  margin: 0 auto 10px auto;
+  padding: 16px 8px;
   border-radius: 4px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   background: #fff;
   line-height: 1;
   overflow: hidden;
 }
-.message-close {
-  position: absolute;
-  top: 25%;
-  right: 10px;
-  color: rgba(153, 152, 152, 0.774);
-  cursor: pointer;
-  font-size: 17px;
-}
-.message-close:hover {
-  color: #0c0c0c;
-}
-.message-success {
+.el_message-success {
   background-color: #fff;
   color: #19be6b;
 }
@@ -100,15 +85,15 @@ export default {
   color: #2db7f5;
   background-color: #fff;
 }
-.message-warning {
+.el_message-warning {
   color: #f90;
   background-color: #fff;
 }
-.message-error {
+.el_message-error {
   background-color: #fff;
   color: #ed4014;
 }
-.message-content {
+.el_message-content {
   font-size: 14px;
 }
 </style>
