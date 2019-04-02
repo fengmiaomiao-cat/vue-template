@@ -31,6 +31,7 @@ if (window.sessionStorage.getItem("token")) {
 }
 
 const router = new VueRouter({
+  mode：'history'，
   routes
 });
 
