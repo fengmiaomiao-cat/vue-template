@@ -3,7 +3,7 @@ import store from "../store/index.js";
 import * as types from "../store/types.js";
 import router from "../router/index.js";
 import Message from '../plugins/el_message/main.js';
-import ｛baseURL，timeout｝ from './config.js'；
+import {baseURL,timeout} from './config.js';
 axios.defaults.timeout = timeout;
 axios.defaults.baseURL = baseURL;
 axios.interceptors.request.use(
@@ -43,7 +43,8 @@ export const gl_ajax = (params)=>{
    return axios({
      method: params.method.toLowerCase(),
      url: axios.defaults.baseURL + params.url,
-     data: params.data?params.data:{},
+     data: params.method.toLowerCase() === 'get'?params.data:{},
+     params: params.method.toLowerCase() !== 'get'?params.data:{}
    }).then(res=>{
      params.success && params.success(res)
    }).catch(error=>{
