@@ -9,7 +9,7 @@ axios.defaults.baseURL = baseURL;
 axios.interceptors.request.use(
   config => {
     if (store.state.token) {
-      config.headers.Authorization = `Bear ${store.state.token}`;
+      config.headers.Authorization = `Token ${store.state.token}`;
     }
     return config;
   },
@@ -42,7 +42,7 @@ axios.interceptors.response.use(
 export const gl_ajax = (params)=>{
    return axios({
      method: params.method.toLowerCase(),
-     url: axios.defaults.baseURL + params.url,
+     url: `${axios.defaults.baseURL}${params.url}`,
      data: params.method.toLowerCase() === 'get'?params.data:{},
      params: params.method.toLowerCase() !== 'get'?params.data:{}
    }).then(res=>{
