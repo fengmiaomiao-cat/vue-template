@@ -2,26 +2,21 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "../store/index";
 import * as types from "../store/types";
-import HelloWorld from "../components/HelloWorld";
-import Login from "../components/Login.vue";
-import Logout from "../components/Logout.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "/",
-    component: HelloWorld
+    name: "home",
+    component: resolve => require(["@/components/Home"], resolve),
+    children:[{
+      
+    }]
   },
   {
     path: "/login",
     name: "Login",
-    component: Login
-  },
-  {
-    path: "/logout",
-    name: "Logout",
-    component: Logout
+    component: resolve => require(["@/components/Login"], resolve)
   }
 ];
 
@@ -31,7 +26,7 @@ if (window.sessionStorage.getItem("token")) {
 }
 
 const router = new VueRouter({
-  mode：'history'，
+  mode: "history",
   routes
 });
 
