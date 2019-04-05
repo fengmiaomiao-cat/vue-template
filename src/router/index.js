@@ -7,10 +7,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "home",
     component: resolve => require(["@/components/Home"], resolve),
     children:[{
-      
+      path：'/employees'，
+      name：'employees'，
+      components：resolve => require(["@/components/employees"]
     }]
   },
   {
