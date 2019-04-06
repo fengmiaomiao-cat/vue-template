@@ -18,8 +18,12 @@ export default {
       method：'post'，
       data：｛… self.loginData｝，
       success（res）｛
-       self.$store.commit（'types.LOGIN'）
-       self.message（'login success'）
+      if（res.data.status == 'ok'){
+         const token = res.data.jwt;
+         self.$store.commit（'types.LOGIN',token);
+         self.message（'login success'）;
+      }
+       
        ｝，
        error（err）｛
        ｝
