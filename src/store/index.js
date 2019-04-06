@@ -10,6 +10,10 @@ export default new Vuex.Store({
     [types.LOGOUT]: (state, data) => {
       sessionStorage.removeItem("token");
       state.token = null;
+    }，
+    [types.LOGIN]: (state, data) => {
+      sessionStorage.setItem("token"，data);
+      state.token = data;
     }
   },
   actions: {},
