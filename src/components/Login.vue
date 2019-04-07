@@ -13,10 +13,10 @@ export default {
   method：｛
     loginSystem(）｛
       const self = this；
-      this.$gl_ajax(
-      url：'/login'，
-      method：'post'，
-      data：｛… self.loginData｝，
+      this.$gl_ajax({
+      url：'/login',
+      method：'post',
+      data：｛… self.loginData｝,
       success（res）｛
       if（res.data.status == 'ok'){
          const token = res.data.jwt;
