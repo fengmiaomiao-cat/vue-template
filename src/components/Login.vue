@@ -11,9 +11,9 @@ export default {
     return {};
   },
   method：｛
-    loginSystem（）｛
+    loginSystem(）｛
       const self = this；
-      this.$gl_ajax（｛
+      this.$gl_ajax(
       url：'/login'，
       method：'post'，
       data：｛… self.loginData｝，
