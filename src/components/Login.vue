@@ -10,26 +10,25 @@ export default {
   data() {
     return {};
   },
-  method：｛
-    loginSystem(）｛
+  method:{
+    loginSystem(){
       const self = this；
       this.$gl_ajax({
       url：'/login',
       method：'post',
-      data：｛… self.loginData｝,
-      success（res）｛
-      if（res.data.status == 'ok'){
-         const token = res.data.jwt;
-         self.$store.commit（'types.LOGIN',token);
-         self.message（'login success'）;
-      }
-       
-       ｝，
-       error（err）｛
-       ｝
+      data:{...self.loginData},
+      success(res){
+        if(res.data.status == 'ok'){
+           const token = res.data.jwt;
+           self.$store.commit('types.LOGIN',token);
+           self.message('login success');
+        }
+      },
+      error(err){
       
-    ｝
-  ｝
+      }
+    });
+   }
 };
 </script>
 
