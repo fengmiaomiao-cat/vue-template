@@ -12,7 +12,7 @@ export default new Vuex.Store({
       state.token = null;
     }，
     [types.LOGIN]: (state, data) => {
-      sessionStorage.setItem("token"，data);
+      sessionStorage.setItem("token",data);
       state.token = data;
     }
   },
