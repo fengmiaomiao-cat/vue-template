@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import * as types from '../store/types.js';
 export default {
   name: "Login",
   data() {
@@ -20,7 +21,7 @@ export default {
       success(res){
         if(res.data.status == 'ok'){
            const token = res.data.jwt;
-           self.$store.commit('types.LOGIN',token);
+           self.$store.commit(types.LOGIN,token);
            self.message('login success');
         }
       },
