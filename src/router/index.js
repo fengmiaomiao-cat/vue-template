@@ -33,21 +33,40 @@ const router = new VueRouter({
   routes
 });
 
+//路由导航守卫
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(r => r.meta.requireAuth)) {
-    if (store.state.token) {
-      next();
-    } else {
+  if (to.path == "/login") {
+    store.commit(types.LOGOUT);
+    next();
+  } else {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
       next({
         path: "/login",
         query: {
           redirect: to.fullPath
         }
       });
+    } else {
+      next();
     }
-  } else {
-    next();
   }
 });
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(r => r.meta.requireAuth)) {
+//     if (store.state.token) {
+//       next();
+//     } else {
+//       next({
+//         path: "/login",
+//         query: {
+//           redirect: to.fullPath
+//         }
+//       });
+//     }
+//   } else {
+//     next();
+//   }
+// });
 
 export default router;
