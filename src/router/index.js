@@ -5,11 +5,11 @@ import * as types from "../store/types";
 Vue.use(VueRouter);
 
 const routes = [{
-    path: '/',
+    path: '',
     redirect: '/login'
   }, {
     path: "/",
-    component: resolve => require(["@/components/Home"], resolve),
+    component: resolve => require(["@/views/Home"], resolve),
     children: [{
       path: '/admin',
       name: 'admin',
@@ -19,7 +19,7 @@ const routes = [{
   {
     path: "/login",
     name: "Login",
-    component: resolve => require(["@/components/Login"], resolve)
+    component: resolve => require(["@/views/Login"], resolve)
   }
 ];
 
