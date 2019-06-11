@@ -4,14 +4,16 @@ import store from "../store/index";
 import * as types from "../store/types";
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
+    path: '/',
+    redirect: '/login'
+  }, {
     path: "/",
     component: resolve => require(["@/components/Home"], resolve),
-    children:[{
-      path：'/employees'，
-      name：'employees'，
-      components：resolve => require(["@/components/employees"]
+    children: [{
+      path: '/admin',
+      name: 'admin',
+      component: resolve => require(["@/views/index"], resolve)
     }]
   },
   {
@@ -38,7 +40,9 @@ router.beforeEach((to, from, next) => {
     } else {
       next({
         path: "/login",
-        query: { redirect: to.fullPath }
+        query: {
+          redirect: to.fullPath
+        }
       });
     }
   } else {
